@@ -24,6 +24,7 @@ export type Database = {
           max_usage: number | null
           notes: string | null
           product_name: string
+          seller_id: string | null
           status: string | null
           updated_at: string | null
           usage_count: number | null
@@ -38,6 +39,7 @@ export type Database = {
           max_usage?: number | null
           notes?: string | null
           product_name: string
+          seller_id?: string | null
           status?: string | null
           updated_at?: string | null
           usage_count?: number | null
@@ -52,10 +54,49 @@ export type Database = {
           max_usage?: number | null
           notes?: string | null
           product_name?: string
+          seller_id?: string | null
           status?: string | null
           updated_at?: string | null
           usage_count?: number | null
           user_email?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "license_keys_seller_id_fkey"
+            columns: ["seller_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["user_id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          company_name: string | null
+          created_at: string
+          email: string
+          full_name: string | null
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          company_name?: string | null
+          created_at?: string
+          email: string
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          company_name?: string | null
+          created_at?: string
+          email?: string
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
